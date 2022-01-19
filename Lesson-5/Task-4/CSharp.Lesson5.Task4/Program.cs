@@ -6,6 +6,7 @@ namespace Csharp.Lesson5.Task4
     class Program
     {
         private static readonly string fileName = "Lesson5.Task4.txt";
+
         static void Main()
         {
             WelcomeScreen();
