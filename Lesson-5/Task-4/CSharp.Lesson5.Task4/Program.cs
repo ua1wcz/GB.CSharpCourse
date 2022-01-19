@@ -5,6 +5,8 @@ namespace Csharp.Lesson5.Task4
 {
     class Program
     {
+        private static readonly string fileName = "Lesson5.Task4.txt";
+
         static void Main()
         {
             WelcomeScreen();
@@ -55,10 +57,10 @@ namespace Csharp.Lesson5.Task4
             {
                 foreach (var folder in Directory.GetDirectories(value))
                 {
-                    Console.WriteLine($"Directory: {folder}");
+                    File.AppendAllText(fileName, $"Directory: {folder}" + Environment.NewLine);
                     foreach (var file in Directory.GetFiles(folder))
                     {
-                        Console.WriteLine($"File: {file}");
+                        File.AppendAllText(fileName, $"File: {file}" + Environment.NewLine);
                     }
                     ShowRecursively(folder);
                 }
@@ -76,12 +78,12 @@ namespace Csharp.Lesson5.Task4
             {
                 foreach (var folder in Directory.GetDirectories(value))
                 {
-                    Console.WriteLine($"Directory: {folder}");
+                    File.AppendAllText(fileName, $"Directory: {folder}" + Environment.NewLine);
                 }
 
                 foreach (var file in Directory.GetFiles(value))
                 {
-                    Console.WriteLine($"File: {file}");
+                    File.AppendAllText(fileName, $"File: {file}" + Environment.NewLine);
                 }
             }
             catch (Exception exception)
@@ -89,7 +91,6 @@ namespace Csharp.Lesson5.Task4
                 Console.WriteLine($"ERROR: {exception.Message}");
                 return;
             }
-
         }
     }
 }

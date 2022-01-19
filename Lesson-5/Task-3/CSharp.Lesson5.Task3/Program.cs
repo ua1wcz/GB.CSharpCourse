@@ -8,8 +8,8 @@ namespace CSharp.Lesson5.Task3
     {
         static void Main()
         {
-            int number;
-            var numbersList = new List<int>();
+            byte number;
+            var numbersList = new List<byte>();
             Console.WriteLine("The programm supports saving numbers to binary file.");
             Console.WriteLine("Supports possibility to enter multiple variables");
             Console.WriteLine("=======================================");
@@ -39,12 +39,7 @@ namespace CSharp.Lesson5.Task3
                         }
                     }
 
-                    number = Convert.ToInt16(consoleInput);
-                    if (number < 0 | number > 255)
-                    {
-                        throw new InvalidOperationException("Number should be between 0 and 255.");
-                    }
-
+                    number = Convert.ToByte(consoleInput);
                     numbersList.Add(number);
                 }
                 catch (Exception exception)
@@ -58,21 +53,13 @@ namespace CSharp.Lesson5.Task3
 
             try
             {
-                using (var writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
-                {
-                    foreach (var selectedNumber in numbersList)
-                    {
-                        writer.Write(selectedNumber);
-                    }
-                }
-                Console.Write($"All values saved to file: {filePath}");
+                File.WriteAllBytes(filePath, numbersList.ToArray());
             }
             catch (Exception exception)
             {
                 Console.WriteLine($"ERROR: {exception.Message}");
                 return;
             }
-            
         }
     }
 }
