@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <AnalysisLevel>preview</AnalysisLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BuildCreator\**" />
+    <EmbeddedResource Remove="BuildCreator\**" />
+    <None Remove="BuildCreator\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="BuildCreator\BuildCreator.csproj" />
+  </ItemGroup>
+
+</Project>
